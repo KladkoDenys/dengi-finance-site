@@ -651,9 +651,8 @@ a {
   }
 }
 .info {
-  background: linear-gradient(224.39deg, #35D5A5 2.1%, #00C7C5 32.94%, #2D9BE0 57.62%, #5277F7 71.52%, #5B75F6 79.13%, #7370F4 91.42%, #836DF3 98.23%);
-  -webkit-mask-image: url("../img/main/main/info/bg.svg");
-  mask-image: url("../img/main/main/info/bg.svg");
+  background-image: url("../img/main/main/info/bg.svg");
+  background-size: cover;
 }
 .info__container {
   padding: 20.3125rem 13.75rem 8.6875rem 13.75rem;
