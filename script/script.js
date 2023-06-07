@@ -80,5 +80,54 @@ document.addEventListener('DOMContentLoaded', () => {
 		showSlide(slideIndex);
 	})
 
+//-свайп
+
+const swipeArea =document.querySelector('.our-team__team-card-block-slider');
+
+	let startX,
+		 startY,
+		 distX,
+		 distY,
+		 threshold = 150;
+
+	swipeArea.addEventListener('touchstart', function(e) {
+			var touch = e.touches[0];
+			startX = touch.pageX;
+			startY = touch.pageY;
+	});
+	  
+	swipeArea.addEventListener('touchmove', function(e) {
+			if (e.touches.length > 1) return; // Игнорировать, если касаний больше одного
+			var touch = e.touches[0];
+			distX = touch.pageX - startX;
+			distY = touch.pageY - startY;
+	});
+
+	swipeArea.addEventListener('touchend', function(e) {
+    if (Math.abs(distX) >= threshold && Math.abs(distY) <= 100) {
+        if (distX > 0) {
+				slideIndex -= 1;
+
+				if ( slideIndex < 0){
+					slideIndex = slides.length - 1;
+				}
+		
+				addBluePoint(slideIndex);
+				hideSlides();
+				showSlide(slideIndex);
+        } else { // Свайп влево
+				slideIndex += 1;
+			
+				if ( slideIndex >= slides.length){
+					slideIndex = 0;
+				}
+		
+				addBluePoint(slideIndex);
+				hideSlides();
+				showSlide(slideIndex);
+        }
+    }
+	});
+
 
 })
